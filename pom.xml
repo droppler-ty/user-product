@@ -8,10 +8,10 @@
 		<version>2.5.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>dockerKafka</artifactId>
+	<groupId>com.droppler</groupId>
+	<artifactId>core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>dockerKafka</name>
+	<name>core</name>
 	<description>Docker Kafka Example</description>
 	<properties>
 		<java.version>11</java.version>
