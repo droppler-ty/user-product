@@ -1,6 +1,7 @@
 package com.example.dockerKafka.controller;
 
 import com.example.dockerKafka.dto.CreateUserDto;
+import com.example.dockerKafka.dto.LoginUserDto;
 import com.example.dockerKafka.model.User;
 import com.example.dockerKafka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,11 @@ public class UserController {
     @PutMapping("/")
     public  ResponseEntity<String> updateUser(@RequestBody User updateUser) {
         return ResponseEntity.ok(userService.updateUser(updateUser));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String>  createUser (@RequestBody LoginUserDto loginUserDto) {
+        return ResponseEntity.ok(userService.loginUser(loginUserDto));
     }
     
 

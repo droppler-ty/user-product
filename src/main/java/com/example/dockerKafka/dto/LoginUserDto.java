@@ -5,8 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateUserDto {
-    private String name;
+public class LoginUserDto {
     private String email;
+    private String password;
     private String channel;
 }

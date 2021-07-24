@@ -1,6 +1,7 @@
 package com.example.dockerKafka.service.Impl;
 
 import com.example.dockerKafka.dto.CreateUserDto;
+import com.example.dockerKafka.dto.LoginUserDto;
 import com.example.dockerKafka.model.User;
 import com.example.dockerKafka.repository.UserRepository;
 import com.example.dockerKafka.service.UserService;
@@ -24,6 +25,8 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setEmail(createUserDto.getEmail());
         user.setName(createUserDto.getName());
+        if(createUserDto.getChannel().equals("M"))
+            user.setIsMobile(true);
         userRepository.save(user);
         return "user created";
     }
@@ -35,6 +38,16 @@ public class UserServiceImpl implements UserService {
         user.setEmail(updateUser.getEmail());
         userRepository.save(user);
         return "user updated";
+    }
+
+    @Override
+    public String loginUser(LoginUserDto loginUserDto) {
+        User user= userRepository.findByEmail(loginUserDto.getEmail());
+        if(loginUserDto.getChannel().equals("M"))
+            user.setIsMobile(true);
+
+        userRepository.save(user);
+        return "login success";
     }
 
 }

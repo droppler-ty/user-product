@@ -1,6 +1,7 @@
 package com.example.dockerKafka.controller;
 
 import com.example.dockerKafka.dto.ProductDto;
+import com.example.dockerKafka.dto.UpdateProductDto;
 import com.example.dockerKafka.model.Product;
 import com.example.dockerKafka.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -29,9 +33,7 @@ public class ProductController {
     }
     
     @PutMapping("/")
-    public  ResponseEntity<String> updateProduct(@RequestBody Product updateProduct) {
+    public  ResponseEntity<String> updateProduct(@RequestBody UpdateProductDto updateProduct) {
         return ResponseEntity.ok(productService.updateProduct(updateProduct));
     }
-    
-
 }

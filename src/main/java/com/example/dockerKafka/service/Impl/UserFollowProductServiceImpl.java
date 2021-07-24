@@ -69,4 +69,25 @@ public class UserFollowProductServiceImpl implements UserFollowProductService {
 
         return userList;
     }
+
+    @Override
+    public List<UserDto> getMobileUsersWhoFavorited(Long productId) {
+
+        List<UserFollowProduct> userFollowProductList = new ArrayList<>();
+        userFollowProductList = userFollowProductRepository.findUserFollowProductsByProductId(productId);
+        List<UserDto> userList = new ArrayList<>();
+        userFollowProductList.stream().forEach(x -> {
+            User user = userRepository.findById(x.getId()).orElse(new User());
+            if(user.getIsMobile().booleanValue())
+            {
+                UserDto userDto = new UserDto();
+                userDto.setEmail(user.getEmail());
+                userDto.setName(user.getName());
+                userDto.setId(user.getId());
+                userList.add(userDto);
+            }
+        });
+
+        return userList;
+    }
 }

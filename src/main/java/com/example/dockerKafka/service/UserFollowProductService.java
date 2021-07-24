@@ -11,4 +11,6 @@ public interface UserFollowProductService {
     String addFavorite(UserFollowProductDto userFollowProductDto);
 
     List<UserDto> getUsersWhoFavorited(Long productId);
+
+    List<UserDto> getMobileUsersWhoFavorited(Long productId);
 }
