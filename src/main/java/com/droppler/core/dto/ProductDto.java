@@ -11,4 +11,5 @@ public class ProductDto {
     private String name;
     private BigDecimal price;
     private BigDecimal mobilePrice;
+    private String barcode;
 }

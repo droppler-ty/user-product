@@ -37,6 +37,8 @@ public class ProductServiceImpl implements ProductService {
         Product product = new Product();
         product.setName(productDto.getName());
         product.setPrice(productDto.getPrice());
+        product.setMobilePrice(productDto.getMobilePrice());
+        product.setBarcode(productDto.getBarcode());
         productRepository.save(product);
         return "product created";
     }
@@ -57,10 +59,10 @@ public class ProductServiceImpl implements ProductService {
             ChangeProductPriceDto changeProductPriceDto = new ChangeProductPriceDto();
             changeProductPriceDto.setUserList(userFollowProductService.getMobileUsersWhoFavorited(product.getId()));
             changeProductPriceDto.setProductId(updateProduct.getProductId());
-            changeProductPriceDto.setOldMobilePrice(product.getPrice());
-            changeProductPriceDto.setNewMobilePrice(updateProduct.getPrice());
+            changeProductPriceDto.setOldMobilePrice(product.getMobilePrice());
+            changeProductPriceDto.setNewMobilePrice(updateProduct.getMobilePrice());
             kafkaTemplate.send(TOPIC,changeProductPriceDto);
-            product.setMobilePrice(updateProduct.getPrice());
+            product.setMobilePrice(updateProduct.getMobilePrice());
         }
 
         product.setName(updateProduct.getName());
