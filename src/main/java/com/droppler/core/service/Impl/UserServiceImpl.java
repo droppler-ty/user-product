@@ -2,6 +2,7 @@ package com.droppler.core.service.Impl;
 
 import com.droppler.core.dto.CreateUserDto;
 import com.droppler.core.dto.LoginUserDto;
+import com.droppler.core.dto.UserDto;
 import com.droppler.core.model.User;
 import com.droppler.core.repository.UserRepository;
 import com.droppler.core.service.UserService;
@@ -49,5 +50,17 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         return "login success";
     }
+
+    @Override
+    public UserDto getUser(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(EntityNotFoundException::new);
+        UserDto userDto = new UserDto();
+        userDto.setEmail(user.getEmail());
+        userDto.setName(user.getName());
+        userDto.setIsMobile(user.getIsMobile());
+
+        return userDto;
+    }
+
 
 }

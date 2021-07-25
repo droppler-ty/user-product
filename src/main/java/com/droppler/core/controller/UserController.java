@@ -2,6 +2,8 @@ package com.droppler.core.controller;
 
 import com.droppler.core.dto.CreateUserDto;
 import com.droppler.core.dto.LoginUserDto;
+import com.droppler.core.dto.ProductDto;
+import com.droppler.core.dto.UserDto;
 import com.droppler.core.model.User;
 import com.droppler.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,10 @@ public class UserController {
     public ResponseEntity<String>  createUser (@RequestBody LoginUserDto loginUserDto) {
         return ResponseEntity.ok(userService.loginUser(loginUserDto));
     }
-    
+
+    @GetMapping("/")
+    public  ResponseEntity<UserDto> getUser(@RequestParam Long userId) {
+        return ResponseEntity.ok(userService.getUser(userId));
+    }
 
 }

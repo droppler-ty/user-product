@@ -9,4 +9,6 @@ public interface ProductService {
     String createProduct(ProductDto productDto);
 
     String updateProduct(UpdateProductDto updateProduct);
+
+    ProductDto getProduct(Long productId, Long userId);
 }

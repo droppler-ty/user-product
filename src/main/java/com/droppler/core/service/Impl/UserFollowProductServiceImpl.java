@@ -45,7 +45,7 @@ public class UserFollowProductServiceImpl implements UserFollowProductService {
 		List<UserFollowProduct> userFollowProductList = userFollowProductRepository.findUserFollowProductsByProductId(productId);
         List<UserDto> userList = new ArrayList<>();
         userFollowProductList.forEach(x -> {
-            User user = userRepository.findById(x.getId()).orElse(new User());
+            User user = userRepository.findById(x.getUserId()).orElse(new User());
             UserDto userDto = new UserDto();
             userDto.setEmail(user.getEmail());
             userDto.setName(user.getName());
@@ -62,8 +62,8 @@ public class UserFollowProductServiceImpl implements UserFollowProductService {
       List<UserFollowProduct> userFollowProductList = userFollowProductRepository.findUserFollowProductsByProductId(productId);
         List<UserDto> userList = new ArrayList<>();
         userFollowProductList.forEach(x -> {
-            User user = userRepository.findById(x.getId()).orElse(new User());
-            if(user.getIsMobile()) {
+            User user = userRepository.findById(x.getUserId()).orElse(new User());
+            if(user.getId() != null && user.getIsMobile()) {
                 UserDto userDto = new UserDto();
                 userDto.setEmail(user.getEmail());
                 userDto.setName(user.getName());

@@ -36,4 +36,9 @@ public class ProductController {
     public  ResponseEntity<String> updateProduct(@RequestBody UpdateProductDto updateProduct) {
         return ResponseEntity.ok(productService.updateProduct(updateProduct));
     }
+
+    @GetMapping("/")
+    public  ResponseEntity<ProductDto> getProduct(@RequestParam Long productId, @RequestParam  Long userId) {
+        return ResponseEntity.ok(productService.getProduct(productId,userId));
+    }
 }
