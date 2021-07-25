@@ -1,10 +1,10 @@
 version: '3'
 services:
   app:
-    container_name: dockerKafka
+    container_name: core
     build: .
     ports:
-      - "8080:8080"
+      - "8081:8081"
     depends_on:
       - db
     environment:
@@ -14,7 +14,7 @@ services:
     container_name: db
     restart: always
     ports:
-      - "5432:5432"
+      - "5433:5433"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=pass123
