@@ -50,6 +50,7 @@ public class UserFollowProductServiceImpl implements UserFollowProductService {
             userDto.setEmail(user.getEmail());
             userDto.setName(user.getName());
             userDto.setId(user.getId());
+            userDto.setIsMobile(user.getIsMobile());
             userList.add(userDto);
         });
 
@@ -68,6 +69,7 @@ public class UserFollowProductServiceImpl implements UserFollowProductService {
                 userDto.setEmail(user.getEmail());
                 userDto.setName(user.getName());
                 userDto.setId(user.getId());
+                userDto.setIsMobile(user.getIsMobile());
                 userList.add(userDto);
             }
         });
