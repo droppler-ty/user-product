@@ -44,14 +44,16 @@ public class UserFollowProductServiceImpl implements UserFollowProductService {
 
 		List<UserFollowProduct> userFollowProductList = userFollowProductRepository.findUserFollowProductsByProductId(productId);
         List<UserDto> userList = new ArrayList<>();
-        userFollowProductList.forEach(x -> {
-            User user = userRepository.findById(x.getUserId()).orElse(new User());
+        userFollowProductList.forEach(userFollowProduct -> {
+          User user = userRepository.findById(userFollowProduct.getUserId()).orElse(new User());
+          if(user.getId() != null && !user.getIsMobile()) {
             UserDto userDto = new UserDto();
             userDto.setEmail(user.getEmail());
             userDto.setName(user.getName());
             userDto.setId(user.getId());
             userDto.setIsMobile(user.getIsMobile());
             userList.add(userDto);
+          }
         });
 
         return userList;
